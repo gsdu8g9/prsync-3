@@ -1,0 +1,2 @@
+# prsync
+parallel rsync scripts
