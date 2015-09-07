@@ -1,2 +1,2 @@
 # prsync
-parallel rsync scripts
+rsync a lot of subdirectory in one directoy
