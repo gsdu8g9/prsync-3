@@ -3,7 +3,7 @@
 # License:      GNU General Public License (GPL)
 # Written by:   Homer Li
 #
-# rsync a lot of subdirectory in one directoy
+# rsync a lot of subdirectory from an directory to another directoy
 
 #######################################################################
 
