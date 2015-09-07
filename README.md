@@ -1,2 +1,2 @@
 # prsync
-rsync a lot of subdirectory in one directoy
+rsync a lot of subdirectory from an directory to another directoy
