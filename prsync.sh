@@ -3,7 +3,7 @@
 # License:      GNU General Public License (GPL)
 # Written by:   Homer Li
 #
-# rsync a lot of subdirectory from an directory to another directoy
+# rsync a lot of subdirectory in one directoy
 
 #######################################################################
 
@@ -40,7 +40,7 @@ then
 	pno=16
 fi
 
-if ! checkvar $pno
+if ! checkvar $TMPATH
 then
 	TMPATH="/tmp"
 fi
@@ -66,11 +66,20 @@ then
 	    do
 	        read -u 9
 	        {
-		    rsync -AXHaP $bpath"/"$j"/" $dpath"/"$j"/"  > /dev/zero
+		  if [ -d $bpath"/"$j"/" ]
+		  then
+		    rsync -AHaP $bpath"/"$j"/" $dpath"/"$j"/"  > /dev/zero
 		    if [ ! $? -eq 0 ]
 		    then
-			touch $TMPATH"/rsync/"$bapth_$i
+			echo $bpath"-"$i"----->"$dpath"-"$i > $TMPATH"/rsync/"$i
 		    fi
+                  else
+                    rsync -AHaP $bpath"/"$j $dpath"/"$j  > /dev/zero
+		    if [ ! $? -eq 0 ]
+		    then
+			echo $bpath"-"$i"----->"$dpath"-"$i > $TMPATH"/rsync/"$i
+		    fi
+                  fi
 	            echo >&9
 	        } &
 	    done
